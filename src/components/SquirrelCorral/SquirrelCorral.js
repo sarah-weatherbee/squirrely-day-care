@@ -1,15 +1,17 @@
 import React from 'react';
 import './SquirrelCorral.scss';
+import Squirrel from '../Squirrel/Squirrel';
+
 
 class SquirrelCorral extends React.Component {
   render() {
     const { squirrels } = this.props;
     const makeSquirrels = squirrels.map(squirrel => (
-      <h2>{squirrel.name}</h2>
-      // <Squirrel squirrel={squirrel} />
+
+      <Squirrel key={squirrel.id} squirrel={squirrel} />
     ));
     return (
-      <div>
+      <div className="SquirrelCorral d-flex flex-wrap">
         { makeSquirrels }
       </div>
     );
