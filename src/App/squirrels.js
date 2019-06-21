@@ -41,4 +41,4 @@ const squirrels = [
   },
 
 ];
-export default { squirrels };
+export default squirrels;
