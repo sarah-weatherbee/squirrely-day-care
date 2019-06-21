@@ -1,8 +1,13 @@
 import React from 'react';
+import squirrelShape from '../../helpers/propz/squirrelShape';
 
 import './Squirrel.scss';
 
 class Squirrel extends React.Component {
+  static propTypes = {
+    squirrel: squirrelShape.squirrelShape,
+  }
+
   render() {
     const { squirrel } = this.props;
     return (
