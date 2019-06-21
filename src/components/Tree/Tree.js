@@ -1,7 +1,12 @@
 import React from 'react';
 import './Tree.scss';
+import treeShape from '../../helpers/propz/treeShape';
 
 class Tree extends React.Component {
+  static propTypes = {
+    tree: treeShape.treeShape,
+  }
+
   render() {
     const { tree } = this.props;
     return (
