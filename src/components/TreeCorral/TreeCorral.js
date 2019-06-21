@@ -1,14 +1,15 @@
 import React from 'react';
 import './TreeCorral.scss';
+import Tree from '../Tree/Tree';
 
 class TreeCorral extends React.Component {
   render() {
     const { trees } = this.props;
     const makeTrees = trees.map(tree => (
-      <h2>{tree.name}</h2>
+      <Tree key={tree.id} tree={tree} />
     ));
     return (
-      <div>
+      <div className="TreeCorral d-flex flex-wrap">
         { makeTrees }
       </div>
     );
