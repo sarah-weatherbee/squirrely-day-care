@@ -19,4 +19,4 @@ const trees = [
   },
 ];
 
-export default { trees };
+export default trees;
