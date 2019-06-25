@@ -24,8 +24,10 @@ class App extends React.Component {
 
     return (
       <div className="App">
-      <div>Squirrley Day Care</div>
+      <div><h1>Squirrley Day Care</h1></div>
+      <h2>Squirrrels</h2>
       <SquirrelCorral squirrels = { squirrels }/>
+      <h2>Caregivers</h2>
       <TreeCorral trees = { trees }/>
       </div>
     );

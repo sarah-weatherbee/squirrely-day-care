@@ -15,7 +15,7 @@ class Tree extends React.Component {
         <img src={tree.imageUrl} className="card-img-top" alt="trees"/>
         <div className="card-body">
           <h5 className="card-title">{tree.name}</h5>
-          <p className="card-text">{tree.funFact}</p>
+          <p className="card-text">Fun fact: {tree.funFact}</p>
         </div>
       </div>
     </div>
