@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Squirrel from '../Squirrel/Squirrel';
 import squirrelShape from '../../helpers/propz/squirrelShape';
 
+
 class SquirrelCorral extends React.Component {
   static propTypes = {
     squirrels: PropTypes.arrayOf(squirrelShape.squirrelShape),

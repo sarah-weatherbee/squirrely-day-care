@@ -1,46 +1,59 @@
 import React from 'react';
-import mySquirrels from './squirrels';
-import myTrees from './trees';
+import firebase from 'firebase/app';
+// import mySquirrels from './squirrels';
+// import myTrees from './trees';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import MyNavbar from '../components/MyNavbar/MyNavbar';
 import './App.scss';
-import SquirrelCorral from '../components/SquirrelCorral/SquirrelCorral';
-import TreeCorral from '../components/TreeCorral/TreeCorral';
+import Auth from '../components/Auth/Auth';
+import Home from '../components/Home/Home';
+import fbConnection from '../helpers/data/connection';
+
+fbConnection();
 
 class App extends React.Component {
   // axios calls to get data - anything that modifies state
   state = {
-    squirrels: [],
-    trees: [],
+    authed: false,
   }
 
+  // state = {
+  //   squirrels: [],
+  //   trees: [],
+  // }
+
   componentDidMount() {
-    this.setState({ squirrels: mySquirrels });
-    this.setState({ trees: myTrees });
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ authed: true });
+      } else {
+        this.setState({ authed: false });
+      }
+    });
+    // this.setState({ squirrels: mySquirrels });
+    // this.setState({ trees: myTrees });
+  }
+
+  componentWillUnmount() {
+    this.removeListener();
   }
 
   render() {
-    const { squirrels } = this.state;
-    const { trees } = this.state;
-
+    const { authed } = this.state;
+    const loadComponent = () => {
+      if (authed) {
+        return <Home />;
+      }
+      return <Auth />;
+    };
     return (
-      <div className="App">
-      <div><h1>Squirrley Day Care</h1></div>
-      <h2>Squirrrels</h2>
-      <SquirrelCorral squirrels = { squirrels }/>
-      <h2>Caregivers</h2>
-      <TreeCorral trees = { trees }/>
-      </div>
+        <div className="App">
+          <MyNavbar authed={authed} />
+          {loadComponent()}
+        </div>
     );
   }
 }
 
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <button className='btn btn-danger'>Hello Squirrels</button>
-//     </div>
-//   );
-// }
 
 export default App;
