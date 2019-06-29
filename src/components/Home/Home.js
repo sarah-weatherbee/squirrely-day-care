@@ -1,5 +1,6 @@
 import React from 'react';
-
+import AllSquirrelz from '../AllSquirrelz/AllSquirrelz';
+import Treez from '../Treez/Treez';
 import './Home.scss';
 // import SquirrelCorral from '../SquirrelCorral/SquirrelCorral';
 // import TreeCorral from '../TreeCorral/TreeCorral';
@@ -13,9 +14,11 @@ class Home extends React.Component {
       <div className="Home">
         <div className="row">
           <div className="col">
+            <AllSquirrelz />
           {/* <SquirrelCorral squirrels = { squirrels } /> */}
           </div>
           <div className="col">
+            <Treez />
             {/* <TreeCorral trees = { trees }/> */}
             </div>
           </div>

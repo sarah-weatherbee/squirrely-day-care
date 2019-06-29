@@ -1,0 +1,17 @@
+{
+  "hug1": {
+    "squirrelId": "squirrel2",
+    "treeId": "tree3",
+    "date": "10/25/2019"
+  },
+  "hug2": {
+    "squirrelId": "squirrel1",
+    "treeId": "tree1",
+    "date": "3/15/2019"
+  },
+  "hug3": {
+  "squirrelId": "squirrel4",
+  "treeId": "tree2",
+  "date": "4/25/2019"
+  }
+}
