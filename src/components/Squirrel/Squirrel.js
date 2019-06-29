@@ -10,8 +10,8 @@ class Squirrel extends React.Component {
   render() {
     const { squirrel } = this.props;
     return (
-      <div className="Squirrel col d-flex">
-        <div className="card">
+      <div className="Squirrel col">
+        <div className="card m-5">
           <img src={squirrel.imageUrl} className="card-img-top image" alt="squirrel" />
           <div className="card-body">
             <h5 className="card-title">{squirrel.name}</h5>
