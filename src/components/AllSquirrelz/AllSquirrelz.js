@@ -17,15 +17,15 @@ componentDidMount() {
 
 render() {
   const squirrelComponents = this.state.squirrels.map(squirrel => (
-    <Squirrel key={squirrel.id} squirrel={squirrel}/>
+      <Squirrel key={squirrel.id} squirrel={squirrel} />
   ));
   return (
-      <div className="AllSquirrelz">
-        <h1>Squirrels</h1>
-        <ul className="squirrels">
-          {squirrelComponents}
-        </ul>
+      <div className="squirrels">
+        <div className="AllSquirrelz">
+      <h2>Squirrels</h2>
+        {squirrelComponents}
       </div>
+    </div>
   );
 }
 }

@@ -10,8 +10,8 @@ class Tree extends React.Component {
   render() {
     const { tree } = this.props;
     return (
-    <div className="Tree col-4">
-      <div className="card">
+    <div className="Tree col">
+      <div className="card m-5">
         <img src={tree.imageUrl} className="card-img-top" alt="trees"/>
         <div className="card-body">
           <h5 className="card-title">{tree.name}</h5>
