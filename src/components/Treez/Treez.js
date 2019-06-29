@@ -19,9 +19,9 @@ class Treez extends React.Component {
       <Tree key={tree.id} tree={tree}/>
     ));
     return (
-      <div className="trees">
+      <div className="trees mt-4">
       <div className="Treez">
-        <h2>Squirrel Sitters</h2>
+        <h1>Squirrel Sitters</h1>
           {treeComponents}
         </div>
       </div>

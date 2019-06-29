@@ -20,9 +20,9 @@ render() {
       <Squirrel key={squirrel.id} squirrel={squirrel} />
   ));
   return (
-      <div className="squirrels">
+      <div className="squirrels mt-4">
         <div className="AllSquirrelz">
-      <h2>Squirrels</h2>
+      <h1>Squirrels</h1>
         {squirrelComponents}
       </div>
     </div>
