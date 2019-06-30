@@ -6,7 +6,6 @@ const squirrelShape = PropTypes.shape({
   disposition: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   favFood: PropTypes.string.isRequired,
-  hatesNaptime: PropTypes.bool.isRequired,
 });
 
 export default { squirrelShape };
