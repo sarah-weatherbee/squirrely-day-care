@@ -1,6 +1,6 @@
 import React from 'react';
-import './Tree.scss';
 import treeShape from '../../helpers/propz/treeShape';
+import './Tree.scss';
 
 class Tree extends React.Component {
   static propTypes = {
@@ -11,7 +11,7 @@ class Tree extends React.Component {
     const { tree } = this.props;
     return (
     <div className="Tree col">
-      <div className="card m-5">
+      <div className="card m-3">
         <img src={tree.imageUrl} className="card-img-top" alt="trees"/>
         <div className="card-body">
           <h4 className="card-title"><strong>{tree.name}</strong></h4>
