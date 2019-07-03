@@ -20,7 +20,7 @@ class Home extends React.Component {
   componentDidMount() {
     hugData.getHugs()
       .then(hugs => this.setState({ hugs }))
-      .catch(err => console.error('no walks for you'));
+      .catch(err => console.error('no walks for you', err));
     treeData.getTrees()
       .then(trees => this.setState({ trees }))
       .catch(err => console.error('could not get trees', err));

@@ -11,9 +11,6 @@ class Hug extends React.Component {
             <h3 className="card-text">{hug.date}</h3>
             <h4 className="card-text">{myTree.name} hugs {mySquirrel.name}</h4>
           </div>
-          <div className="float-right">
-          <button className="btn-xs mb-1 btn-danger">x</button>
-          </div>
         </div>
       </div>
     );
