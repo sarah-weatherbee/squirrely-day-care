@@ -3,13 +3,16 @@ import './Hug.scss';
 
 class Hug extends React.Component {
   render() {
-    const { hug } = this.props;
+    const { hug, myTree, mySquirrel } = this.props;
     return (
       <div className="Hug col-3">
         <div className="card m-3">
           <div className="card-body">
             <h3 className="card-text">{hug.date}</h3>
-            <h4 className="card-text">{hug.treeId} hugs {hug.squirrelId}</h4>
+            <h4 className="card-text">{myTree.name} hugs {mySquirrel.name}</h4>
+          </div>
+          <div className="float-right">
+          <button className="btn-xs mb-1 btn-danger">x</button>
           </div>
         </div>
       </div>
