@@ -2,14 +2,34 @@ import React from 'react';
 import './Hug.scss';
 
 class Hug extends React.Component {
+  componentWillUpdate(nextProps) {
+    if (nextProps.editHug !== this.props.editHug && nextProps.editHug.name) {
+      this.setState({ squirrelId: nextProps.editHug.squirrelId, treeId: nextProps.editHug.treeId, date: nextProps.editHug.date });
+    }
+  }
+
+  deleteHugEvent = (e) => {
+    const { hug, deleteHugs } = this.props;
+    e.preventDefault();
+    deleteHugs(hug.id);
+  }
+
+  pickHug = (e) => {
+    e.preventDefault();
+    const { hug, selectHugToEdit } = this.props;
+    selectHugToEdit(hug.id);
+  }
+
   render() {
-    const { hug, myTree, mySquirrel } = this.props;
+    const { hug } = this.props;
     return (
       <div className="Hug col-3">
         <div className="card m-3">
           <div className="card-body">
             <h3 className="card-text">{hug.date}</h3>
-            <h4 className="card-text">{myTree.name} hugs {mySquirrel.name}</h4>
+            <h4 className="card-text">{hug.treeId} hugs {hug.squirrelId}</h4>
+            <button className="btn btn-danger" onClick={this.deleteHugEvent}>x</button>
+            <button className="btn btn-info" onClick={this.pickHug}>Edit</button>
           </div>
         </div>
       </div>

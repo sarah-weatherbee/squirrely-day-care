@@ -1,68 +1,105 @@
 import React from 'react';
-import addHugData from '../../helpers/data/addHugData';
+import {
+  Input,
+  InputGroup,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  UncontrolledDropdown,
+} from 'reactstrap';
 
-class Form extends React.Component {
+import moment from 'moment';
+
+
+// import addHugData from '../../helpers/data/addHugData';
+
+class AddHugForm extends React.Component {
    state = {
-     squirrelId: '',
-     treeId: '',
+     squirrelDropdownOpen: false,
+     treeDropdownOpen: false,
+     squirrelName: 'Choose squirrel',
+     treeName: 'Choose tree',
      date: '',
-   };
+   }
 
-   changeEvent = (e) => {
-     this.setState({
-       [e.target.name]: e.target.value,
-     });
-   };
+   componentDidMount() {
+     const { editHug } = this.props;
+     if (Object.keys(this.props.editHug).length > 0) {
+       this.setState({ squirrelName: editHug.squirrelId, date: editHug.date });
+     }
+   }
 
-   giveHug = (e) => {
+   squirrelToggleEvent = this.squirrelToggleEvent.bind(this);
+
+   treeToggleEvent = this.treeToggleEvent.bind(this);
+
+   dateChangeEvent = (e) => {
      e.preventDefault();
-     const hug = {
-       squirrelId: this.state.squirrelId,
-       treeId: this.state.treeId,
-       date: this.state.date,
-     };
+     this.setState({ date: e.target.value });
+   }
 
-     addHugData.addHug(hug)
-       .then(() => {
-         this.setState({
-           squirrelId: '',
-           treeId: '',
-           date: '',
-         });
-       })
-       .catch(err => console.error('cannot add hug', err));
-   };
+   squirrelToggleEvent(e) {
+     e.preventDefault();
+     this.setState(prevState => ({
+       squirrelDropdownOpen: !prevState.squirrelDropdownOpen,
+     }));
+   }
 
+   treeToggleEvent(e) {
+     e.preventDefault();
+     this.setState(prevState => ({
+       treeDropdownOpen: !prevState.treeDropdownOpen,
+     }));
+   }
+
+   getSquirrelName = (e) => {
+     e.preventDefault();
+     this.setState({ squirrelName: e.target.name });
+   }
+
+   getTreeName = (e) => {
+     e.preventDefault();
+     this.setState({ treeName: e.target.name });
+   }
+
+   saveHug = (e) => {
+     const { editHug } = this.props;
+     e.preventDefault();
+     if (editHug) {
+       this.props.saveNewHug(this.state.squirrelName, this.state.treeName, this.state.date, editHug.id);
+     }
+   }
 
    render() {
+     const squirrels = this.props.squirrels.map(squirrel => (
+       <DropdownItem key={squirrel.id} name={squirrel.name} onClick={this.getSquirrelName}>{squirrel.name}</DropdownItem>
+     ));
+     const trees = this.props.trees.map(tree => (
+       <DropdownItem key={tree.id} onClick={this.getTreeName} name={tree.name}>{tree.name}</DropdownItem>
+     ));
      return (
-      <form>
-        <div class="form-group">
-          <label for="date">Date</label>
-          <input type="date" class="form-control" id="date" placeholder="date" value={this.state.date} onChange={e => this.changeEvent(e)}/>
+       <div>
+         <UncontrolledDropdown isOpen={this.state.squirrelDropdownOpen} onClick={this.squirrelToggleEvent}>
+           <DropdownToggle caret>{this.state.squirrelName}</DropdownToggle>
+           <DropdownMenu>
+             {squirrels}
+           </DropdownMenu>
+         </UncontrolledDropdown>
+         <UncontrolledDropdown isOpen={this.state.treeDropdownOpen} onClick={this.treeToggleEvent}>
+           <DropdownToggle caret>{this.state.treeName}</DropdownToggle>
+           <DropdownMenu>
+             {trees}
+           </DropdownMenu>
+         </UncontrolledDropdown>
+         <InputGroup>
+         <Input
+         onChange={this.dateChangeEvent}
+         placeholder="03/04/1999"
+         />
+         </InputGroup>
+         <button className="btn btn-secondary" onClick={this.saveHug}>Submit hug</button>
         </div>
-        <div class="form-group">
-            <label for="tree">Select Tree</label>
-            <select class="form-control" id="tree" value={this.state.treeId} onChange={e => this.changeEvent(e)}>
-              <option>Maple</option>
-              <option>Oak</option>
-              <option>Willow</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="tree">Select Squirrel</label>
-            <select class="form-control" id="squirrel" value={this.state.squirrelId} onChange={e => this.changeEvent(e)}>
-              <option>Trippy</option>
-              <option>Sleepy</option>
-              <option>Thumbelina</option>
-              <option>Skippy</option>
-              <option>Sketchy</option>
-            </select>
-        </div>
-        <button onClick={e => this.giveHug(e)}>Add Hug</button>
-    </form>
      );
    }
 }
-
-export default Form;
+export default AddHugForm;

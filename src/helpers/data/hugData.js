@@ -15,5 +15,15 @@ const getHugs = () => new Promise((resolve, reject) => {
     })
     .catch(err => reject(err));
 });
+const deleteHugs = hugId => axios.delete(`${baseUrl}/hugs/${hugId}.json`);
 
-export default { getHugs };
+const addHugToFirebase = newHug => axios.post(`${baseUrl}/hugs.json`, newHug);
+
+const editHug = (hugId, updateHug) => axios.put(`${baseUrl}/hugs/${hugId}.json`, updateHug);
+
+export default {
+  getHugs,
+  addHugToFirebase,
+  deleteHugs,
+  editHug,
+};
