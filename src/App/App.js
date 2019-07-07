@@ -1,7 +1,5 @@
 import React from 'react';
 import firebase from 'firebase/app';
-// import mySquirrels from './squirrels';
-// import myTrees from './trees';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 import './App.scss';
@@ -13,15 +11,9 @@ import fbConnection from '../helpers/data/connection';
 fbConnection();
 
 class App extends React.Component {
-  // axios calls to get data - anything that modifies state
   state = {
     authed: false,
   }
-
-  // state = {
-  //   squirrels: [],
-  //   trees: [],
-  // }
 
   componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
@@ -31,8 +23,6 @@ class App extends React.Component {
         this.setState({ authed: false });
       }
     });
-    // this.setState({ squirrels: mySquirrels });
-    // this.setState({ trees: myTrees });
   }
 
   componentWillUnmount() {
