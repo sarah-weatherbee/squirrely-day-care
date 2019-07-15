@@ -29,7 +29,7 @@ class MyNavbar extends React.Component {
             </ul>
             <form className="form-inline my-2 my-lg-0">
               {authed ? (
-                <button className="btn btn-danger my-2 my-sm-0" onClick={this.logMeOut}>Logout</button>
+                <button className="btn btn-link my-2 my-sm-0" onClick={this.logMeOut}>Logout</button>
               ) : (
                 ''
               )}
