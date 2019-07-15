@@ -4,15 +4,12 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
 } from 'reactstrap';
 
-import firebase from 'firebase/app';
 import Squirrelz from '../AllSquirrelz/AllSquirrelz';
 import Treez from '../Treez/Treez';
 import Hug from '../Hug/Hug';
 import AddHugForm from '../AddHugForm/AddHugForm';
-import HugCorral from '../HugCorral/HugCorral';
 import hugData from '../../helpers/data/hugData';
 import treeData from '../../helpers/data/treeData';
 import squirrelData from '../../helpers/data/squirrelData';

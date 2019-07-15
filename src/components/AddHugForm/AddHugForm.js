@@ -8,11 +8,6 @@ import {
   UncontrolledDropdown,
 } from 'reactstrap';
 
-import moment from 'moment';
-
-
-// import addHugData from '../../helpers/data/addHugData';
-
 class AddHugForm extends React.Component {
    state = {
      squirrelDropdownOpen: false,
